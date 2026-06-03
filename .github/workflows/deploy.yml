@@ -16,6 +16,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          protocol: ftps        # ← important! matches "explicit FTPS"
+          protocol: ftps
           local-dir: ./
-          server-dir: /public_html/fusalogix.com
+          server-dir: /public_html/fusalogix.com/
