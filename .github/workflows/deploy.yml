@@ -18,7 +18,7 @@ jobs:
           port: 21
           protocol: ftps
           local-dir: ./
-          server-dir: ./public_html/fusalogix.com/fusalogix/
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
