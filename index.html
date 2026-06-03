@@ -37,19 +37,7 @@
 <header class="nav" id="nav">
   <div class="container nav__inner">
     <a class="nav__brand" href="#top" aria-label="FuSaLogix home">
-      <svg class="nav__mark" width="36" height="36" viewBox="0 0 64 64" aria-hidden="true">
-        <defs>
-          <linearGradient id="navmark" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0" stop-color="#D35400"/>
-            <stop offset="1" stop-color="#C0392B"/>
-          </linearGradient>
-        </defs>
-        <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="url(#navmark)" stroke-width="2"/>
-        <path fill="none" stroke="url(#navmark)" stroke-width="3.5" stroke-linecap="round"
-              d="M16 20h22M16 32h18M16 44h12"/>
-        <circle cx="46" cy="44" r="5" fill="none" stroke="url(#navmark)" stroke-width="3"/>
-      </svg>
-      <span class="nav__wordmark">FuSa<span>Logix</span></span>
+      <span class="nav__wordmark"><strong>FuSa</strong><span>Logix</span></span>
     </a>
 
     <nav class="nav__links" aria-label="Primary">
@@ -87,6 +75,85 @@
      SECTION 1 — HERO
 ============================================================ -->
 <section id="top" class="hero">
+
+  <!--
+    Isometric wireframe ECU / PCB — 3D background accent for the hero.
+    Pure SVG line art at low opacity, pointer-events disabled.
+  -->
+  <svg class="hero__iso" viewBox="0 0 600 460" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <!-- PCB board (isometric rhombus) -->
+      <path d="M 100 280 L 350 160 L 540 250 L 290 380 Z"/>
+      <!-- PCB underside depth -->
+      <path d="M 100 280 L 100 300 L 290 400 L 290 380"/>
+      <path d="M 290 400 L 540 270 L 540 250"/>
+
+      <!-- Main chip on top of board (raised rhombus) -->
+      <path d="M 240 215 L 330 173 L 410 211 L 320 255 Z"/>
+      <path d="M 240 215 L 240 230 L 320 270 L 320 255"/>
+      <path d="M 320 270 L 410 226 L 410 211"/>
+      <path d="M 240 230 L 330 188 L 410 226"/>
+      <path d="M 330 173 L 330 188"/>
+
+      <!-- Chip die in center -->
+      <path d="M 290 213 L 335 192 L 365 207 L 320 230 Z"/>
+
+      <!-- PCB traces -->
+      <g opacity=".55">
+        <path d="M 160 305 L 230 269"/>
+        <path d="M 175 313 L 245 277"/>
+        <path d="M 380 308 L 450 273"/>
+        <path d="M 395 316 L 465 281"/>
+        <path d="M 290 380 L 320 365"/>
+        <path d="M 320 350 L 360 330"/>
+      </g>
+
+      <!-- Chip pins on perimeter -->
+      <g stroke-width="1.4" opacity=".7">
+        <path d="M 248 234 L 244 236"/>
+        <path d="M 260 240 L 256 242"/>
+        <path d="M 272 246 L 268 248"/>
+        <path d="M 284 252 L 280 254"/>
+        <path d="M 320 270 L 322 274"/>
+        <path d="M 332 264 L 334 268"/>
+        <path d="M 344 258 L 346 262"/>
+        <path d="M 356 252 L 358 256"/>
+        <path d="M 395 233 L 399 235"/>
+        <path d="M 380 226 L 384 228"/>
+      </g>
+
+      <!-- Secondary components (capacitors as small isometric blocks) -->
+      <g opacity=".6">
+        <path d="M 175 270 L 195 260 L 205 265 L 185 275 Z"/>
+        <path d="M 175 270 L 175 280 L 185 285 L 185 275"/>
+        <path d="M 185 285 L 205 275 L 205 265"/>
+
+        <path d="M 445 235 L 465 225 L 475 230 L 455 240 Z"/>
+        <path d="M 445 235 L 445 245 L 455 250 L 455 240"/>
+        <path d="M 455 250 L 475 240 L 475 230"/>
+      </g>
+
+      <!-- Connector strip on board edge -->
+      <g opacity=".5">
+        <path d="M 120 295 L 140 285"/>
+        <path d="M 128 299 L 148 289"/>
+        <path d="M 136 303 L 156 293"/>
+      </g>
+
+      <!-- Floating signal annotation lines -->
+      <g opacity=".5" stroke-dasharray="2 3">
+        <path d="M 330 173 L 330 105 L 460 105"/>
+        <path d="M 240 215 L 180 215 L 130 240"/>
+      </g>
+    </g>
+
+    <!-- Tiny technical callouts -->
+    <g font-family="Roboto, sans-serif" font-size="9" fill="currentColor" opacity=".7" letter-spacing="1.5">
+      <text x="465" y="103">ECU · ASIL-D</text>
+      <text x="95" y="238">SAFETY MCU</text>
+    </g>
+  </svg>
+
   <div class="container hero__inner">
 
     <div class="hero__text">
@@ -96,8 +163,7 @@
         compliance, engineered.
       </h1>
       <p class="hero__sub">
-        A specialist Functional Safety partner for automotive OEMs, Tier-1 suppliers, and semiconductor
-        companies — across HARA, SOTIF, FMEDA, fault injection, certification, and training.
+        Functional Safety for OEMs, Tier-1s, and semiconductor companies — HARA to certification.
       </p>
 
       <div class="hero__cta">
@@ -262,47 +328,100 @@
     <div class="about__lede">
       <span class="section__num reveal">01</span>
       <p class="eyebrow reveal">Who We Are</p>
-      <h2 class="section__title reveal">A specialized Functional Safety partner for the systems that move the world.</h2>
+      <h2 class="section__title reveal">A Functional Safety partner for the systems that move the world.</h2>
       <p class="reveal about__first">
-        A specialized Functional Safety consulting and engineering firm covering the full safety
-        lifecycle — concept through certification.
+        Full safety lifecycle — concept through certification.
       </p>
       <p class="reveal">
-        Senior engineers, proven methodology, and a deep working knowledge of the standards that
-        govern modern mobility.
+        Senior engineers. Proven methodology. Deep standards knowledge.
       </p>
       <div class="about__sig reveal">
         <span>Engineering Functional Safety.</span>
         <span>Enabling Safer Mobility.</span>
       </div>
+
+      <figure class="about__diagram reveal" aria-label="Functional Safety lifecycle — five-phase flow from concept to certification.">
+        <svg viewBox="0 0 560 180" class="about__svg" aria-hidden="true">
+          <defs>
+            <pattern id="fs-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#262626" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="560" height="180" fill="url(#fs-grid)"/>
+          <!-- corner brackets -->
+          <g stroke="#3a3a3a" stroke-width="0.8" fill="none">
+            <path d="M 12 12 L 12 26 M 12 12 L 26 12"/>
+            <path d="M 548 12 L 548 26 M 548 12 L 534 12"/>
+            <path d="M 12 168 L 12 154 M 12 168 L 26 168"/>
+            <path d="M 548 168 L 548 154 M 548 168 L 534 168"/>
+          </g>
+          <text x="32" y="30" class="bp-title">FIG. 02 — FUNCTIONAL SAFETY LIFECYCLE</text>
+          <text x="528" y="30" class="bp-meta" text-anchor="end">ISO 26262</text>
+
+          <!-- horizontal flow line -->
+          <line x1="70" y1="100" x2="490" y2="100" stroke="#C0392B" stroke-width="0.9" stroke-dasharray="3 3" opacity="0.55"/>
+
+          <!-- stage nodes -->
+          <g>
+            <circle cx="70"  cy="100" r="14" fill="#1a1a1a" stroke="#C0392B" stroke-width="1.4"/>
+            <text x="70" y="105" text-anchor="middle" class="bp-num">01</text>
+            <text x="70" y="138" text-anchor="middle" class="bp-tag">CONCEPT</text>
+            <text x="70" y="150" text-anchor="middle" class="bp-tag" opacity="0.6">HARA · ASIL</text>
+
+            <circle cx="175" cy="100" r="14" fill="#1a1a1a" stroke="#C0392B" stroke-width="1.4"/>
+            <text x="175" y="105" text-anchor="middle" class="bp-num">02</text>
+            <text x="175" y="138" text-anchor="middle" class="bp-tag">DESIGN</text>
+            <text x="175" y="150" text-anchor="middle" class="bp-tag" opacity="0.6">SAFETY CONCEPT</text>
+
+            <circle cx="280" cy="100" r="14" fill="#1a1a1a" stroke="#C0392B" stroke-width="1.4"/>
+            <text x="280" y="105" text-anchor="middle" class="bp-num">03</text>
+            <text x="280" y="138" text-anchor="middle" class="bp-tag">VERIFICATION</text>
+            <text x="280" y="150" text-anchor="middle" class="bp-tag" opacity="0.6">FMEDA · FIT</text>
+
+            <circle cx="385" cy="100" r="14" fill="#1a1a1a" stroke="#C0392B" stroke-width="1.4"/>
+            <text x="385" y="105" text-anchor="middle" class="bp-num">04</text>
+            <text x="385" y="138" text-anchor="middle" class="bp-tag">VALIDATION</text>
+            <text x="385" y="150" text-anchor="middle" class="bp-tag" opacity="0.6">SOTIF · SCENARIOS</text>
+
+            <rect x="476" y="86" width="28" height="28" fill="#C0392B" stroke="#F5F5F5" stroke-width="0.5"/>
+            <text x="490" y="105" text-anchor="middle" class="bp-vcu">05</text>
+            <text x="490" y="138" text-anchor="middle" class="bp-tag">CERTIFICATION</text>
+            <text x="490" y="150" text-anchor="middle" class="bp-tag" opacity="0.6">TÜV · AUDIT</text>
+          </g>
+
+          <!-- top labels -->
+          <text x="70"  y="68" text-anchor="middle" class="bp-tag" opacity="0.7">ITEM DEFINITION</text>
+          <text x="280" y="68" text-anchor="middle" class="bp-tag" opacity="0.7">V-MODEL</text>
+          <text x="490" y="68" text-anchor="middle" class="bp-tag" opacity="0.7">RELEASE</text>
+        </svg>
+      </figure>
     </div>
 
     <div class="about__cards">
       <article class="glass reveal">
         <header><span class="card__kicker">Vision</span></header>
-        <p>To become a global leader in Functional Safety engineering and compliance excellence.</p>
+        <p>A global leader in Functional Safety engineering and compliance.</p>
       </article>
       <article class="glass reveal">
         <header><span class="card__kicker">Mission</span></header>
-        <p>Deliver end-to-end Functional Safety solutions that enable our clients to ship
-           compliant, reliable, and certifiable products faster and with measurable confidence.</p>
+        <p>End-to-end Functional Safety — shipping compliant, certifiable products with measurable confidence.</p>
       </article>
       <article class="glass reveal">
         <header><span class="card__kicker">Core Values</span></header>
         <ul class="bullets">
-          <li>Engineering rigor over checkbox compliance</li>
-          <li>Independence and technical objectivity</li>
+          <li>Rigor over checkbox compliance</li>
+          <li>Independence and objectivity</li>
           <li>Transparency in every deliverable</li>
-          <li>Continuous learning and standards leadership</li>
+          <li>Continuous standards leadership</li>
         </ul>
       </article>
       <article class="glass reveal">
         <header><span class="card__kicker">Why Choose Us</span></header>
         <ul class="bullets">
-          <li>26+ years of safety-critical leadership</li>
-          <li>End-to-end ISO 26262 &amp; SOTIF coverage</li>
-          <li>Hands-on FMEDA, fault injection &amp; audit support</li>
-          <li>500+ engineers trained worldwide</li>
+          <li>26+ years in safety-critical systems</li>
+          <li>End-to-end ISO 26262 &amp; SOTIF</li>
+          <li>Hands-on FMEDA, FIT, audit support</li>
+          <li>500+ engineers trained</li>
         </ul>
       </article>
     </div>
@@ -539,7 +658,7 @@
       <p class="eyebrow reveal">Industries We Serve</p>
       <h2 class="section__title reveal">Trusted across the safety-critical value chain.</h2>
       <p class="section__sub reveal">
-        Wherever certifiable reliability is non-negotiable.
+        Where certifiable reliability is mandatory.
       </p>
     </header>
 
@@ -621,26 +740,26 @@
       <p class="eyebrow reveal">Core Capabilities</p>
       <h2 class="section__title reveal">Fifteen disciplines. One Functional Safety practice.</h2>
       <p class="section__sub reveal">
-        Coverage from item definition through production release — plus SOTIF, supplier governance, and competency.
+        Item definition to production release — plus SOTIF, supplier governance, and competency.
       </p>
     </header>
 
     <ul class="cap-grid" role="list">
-      <li class="cap reveal"><span class="cap__num">01</span><h3>Functional Safety Management</h3><p>Program governance and confirmation reviews per ISO 26262 Part 2.</p></li>
-      <li class="cap reveal"><span class="cap__num">02</span><h3>HARA</h3><p>Hazard analysis, ASIL classification, safety goal derivation.</p></li>
-      <li class="cap reveal"><span class="cap__num">03</span><h3>SOTIF</h3><p>ISO 21448 analyses for ADAS, AD, complex sensing chains.</p></li>
-      <li class="cap reveal"><span class="cap__num">04</span><h3>Safety Goal Development</h3><p>Top-level goals from HARA, traceable through the V-model.</p></li>
-      <li class="cap reveal"><span class="cap__num">05</span><h3>Functional Safety Concept</h3><p>Allocation, decomposition, warning/degradation strategies.</p></li>
+      <li class="cap reveal"><span class="cap__num">01</span><h3>Functional Safety Management</h3><p>Governance per ISO 26262 Part 2.</p></li>
+      <li class="cap reveal"><span class="cap__num">02</span><h3>HARA</h3><p>Hazard analysis, ASIL, safety goals.</p></li>
+      <li class="cap reveal"><span class="cap__num">03</span><h3>SOTIF</h3><p>ISO 21448 for ADAS and AD.</p></li>
+      <li class="cap reveal"><span class="cap__num">04</span><h3>Safety Goal Development</h3><p>Top-level goals, traceable through the V-model.</p></li>
+      <li class="cap reveal"><span class="cap__num">05</span><h3>Functional Safety Concept</h3><p>Allocation, decomposition, degradation.</p></li>
       <li class="cap reveal"><span class="cap__num">06</span><h3>Technical Safety Concept</h3><p>Safety mechanisms, latencies, fault handling.</p></li>
-      <li class="cap reveal"><span class="cap__num">07</span><h3>Safety Architecture</h3><p>System, HW, and SW architecture for ASIL-rated platforms.</p></li>
-      <li class="cap reveal"><span class="cap__num">08</span><h3>FMEDA</h3><p>SPFM, LFM, PMHF for ICs, ECUs, and modules.</p></li>
-      <li class="cap reveal"><span class="cap__num">09</span><h3>ASIL Compliance</h3><p>ASIL A–D readiness with full evidence packs.</p></li>
-      <li class="cap reveal"><span class="cap__num">10</span><h3>Safety Validation</h3><p>Strategy, scenario coverage, acceptance tests.</p></li>
-      <li class="cap reveal"><span class="cap__num">11</span><h3>Fault Injection Testing</h3><p>HW, SW, and CAN-level fault campaigns.</p></li>
-      <li class="cap reveal"><span class="cap__num">12</span><h3>Certification Readiness</h3><p>Audit prep with TÜV SÜD, TÜV Rheinland, equivalents.</p></li>
-      <li class="cap reveal"><span class="cap__num">13</span><h3>Supplier Safety Management</h3><p>DIA, supplier audits, joint safety case integration.</p></li>
-      <li class="cap reveal"><span class="cap__num">14</span><h3>Safety Audits</h3><p>Independent confirmation reviews and gap analyses.</p></li>
-      <li class="cap reveal"><span class="cap__num">15</span><h3>Training &amp; Competency</h3><p>Role-based curricula, certifications, mentorship.</p></li>
+      <li class="cap reveal"><span class="cap__num">07</span><h3>Safety Architecture</h3><p>System, HW, SW for ASIL-rated platforms.</p></li>
+      <li class="cap reveal"><span class="cap__num">08</span><h3>FMEDA</h3><p>SPFM, LFM, PMHF for ICs and ECUs.</p></li>
+      <li class="cap reveal"><span class="cap__num">09</span><h3>ASIL Compliance</h3><p>ASIL A–D with full evidence packs.</p></li>
+      <li class="cap reveal"><span class="cap__num">10</span><h3>Safety Validation</h3><p>Scenario coverage and acceptance tests.</p></li>
+      <li class="cap reveal"><span class="cap__num">11</span><h3>Fault Injection Testing</h3><p>HW, SW, and CAN-level campaigns.</p></li>
+      <li class="cap reveal"><span class="cap__num">12</span><h3>Certification Readiness</h3><p>Audit prep with TÜV SÜD &amp; Rheinland.</p></li>
+      <li class="cap reveal"><span class="cap__num">13</span><h3>Supplier Safety Management</h3><p>DIA, audits, joint safety cases.</p></li>
+      <li class="cap reveal"><span class="cap__num">14</span><h3>Safety Audits</h3><p>Independent confirmation and gap analyses.</p></li>
+      <li class="cap reveal"><span class="cap__num">15</span><h3>Training &amp; Competency</h3><p>Role-based curricula and mentorship.</p></li>
     </ul>
   </div>
 </section>
@@ -649,13 +768,87 @@
      SECTION 6 — SERVICES
 ============================================================ -->
 <section id="services" class="section services">
+
+  <!--
+    Isometric layered safety architecture (App → Safety → HAL → HW) —
+    decorative 3D background accent for the Services section.
+    Pure SVG line art, low opacity, anchored to the right side.
+  -->
+  <svg class="svc__iso" viewBox="0 0 520 480" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+
+      <!-- Layer 4: Application (top, smallest perspective) -->
+      <g>
+        <path d="M 120 80 L 340 80 L 400 110 L 180 110 Z"/>
+        <path d="M 120 80 L 120 100 L 180 130 L 180 110"/>
+        <path d="M 180 130 L 400 130 L 400 110"/>
+        <text x="200" y="103" font-family="Roboto, sans-serif" font-size="9"
+              fill="currentColor" opacity=".75" letter-spacing="1.5">APPLICATION LAYER</text>
+      </g>
+
+      <!-- Layer 3: Safety / RTE -->
+      <g>
+        <path d="M 110 160 L 350 160 L 410 190 L 170 190 Z"/>
+        <path d="M 110 160 L 110 180 L 170 210 L 170 190"/>
+        <path d="M 170 210 L 410 210 L 410 190"/>
+        <text x="190" y="183" font-family="Roboto, sans-serif" font-size="9"
+              fill="currentColor" opacity=".75" letter-spacing="1.5">SAFETY MIDDLEWARE / RTE</text>
+      </g>
+
+      <!-- Layer 2: HAL / Drivers -->
+      <g>
+        <path d="M 100 240 L 360 240 L 420 270 L 160 270 Z"/>
+        <path d="M 100 240 L 100 260 L 160 290 L 160 270"/>
+        <path d="M 160 290 L 420 290 L 420 270"/>
+        <text x="180" y="263" font-family="Roboto, sans-serif" font-size="9"
+              fill="currentColor" opacity=".75" letter-spacing="1.5">HAL · DRIVERS</text>
+      </g>
+
+      <!-- Layer 1: Hardware / MCU (bottom, largest) -->
+      <g>
+        <path d="M 90 320 L 370 320 L 430 350 L 150 350 Z"/>
+        <path d="M 90 320 L 90 340 L 150 370 L 150 350"/>
+        <path d="M 150 370 L 430 370 L 430 350"/>
+        <text x="170" y="343" font-family="Roboto, sans-serif" font-size="9"
+              fill="currentColor" opacity=".75" letter-spacing="1.5">HARDWARE · ASIL-D MCU</text>
+      </g>
+
+      <!-- Vertical connection rails between layers -->
+      <g opacity=".4" stroke-dasharray="2 3">
+        <path d="M 200 110 L 200 160"/>
+        <path d="M 200 190 L 200 240"/>
+        <path d="M 200 270 L 200 320"/>
+        <path d="M 320 110 L 320 160"/>
+        <path d="M 320 190 L 320 240"/>
+        <path d="M 320 270 L 320 320"/>
+      </g>
+
+      <!-- ASIL classification labels on the side -->
+      <g font-family="Roboto, sans-serif" font-size="9" fill="currentColor"
+         opacity=".55" letter-spacing="1.5">
+        <text x="445" y="97">ASIL · A</text>
+        <text x="455" y="177">ASIL · B</text>
+        <text x="465" y="257">ASIL · C</text>
+        <text x="475" y="337">ASIL · D</text>
+      </g>
+
+      <!-- Side tick marks -->
+      <g opacity=".4">
+        <path d="M 410 95 L 440 95"/>
+        <path d="M 420 175 L 450 175"/>
+        <path d="M 430 255 L 460 255"/>
+        <path d="M 440 335 L 470 335"/>
+      </g>
+    </g>
+  </svg>
+
   <div class="container">
     <header class="section__head">
       <span class="section__num reveal">05</span>
       <p class="eyebrow reveal">Services</p>
       <h2 class="section__title reveal">Six integrated service lines, sized to your program.</h2>
       <p class="section__sub reveal">
-        Focused assessments to multi-year programs — always led by senior Functional Safety engineers.
+        Assessments to multi-year programs — led by senior Functional Safety engineers.
       </p>
     </header>
 
@@ -669,7 +862,7 @@
           <span class="svc__index">01</span>
         </div>
         <h3>Functional Safety Assessment</h3>
-        <p>Independent assessment of your safety case and work products.</p>
+        <p>Independent review of your safety case.</p>
         <ul class="bullets">
           <li>HARA &amp; safety goal review</li>
           <li>SOTIF gap evaluation</li>
@@ -686,7 +879,7 @@
           <span class="svc__index">02</span>
         </div>
         <h3>Safety Architecture Design</h3>
-        <p>System, hardware, and software safety architecture, end to end.</p>
+        <p>System, HW, and SW safety architecture.</p>
         <ul class="bullets">
           <li>Functional Safety Architecture</li>
           <li>Hardware Architecture &amp; decomposition</li>
@@ -703,7 +896,7 @@
           <span class="svc__index">03</span>
         </div>
         <h3>Safety Software Engineering</h3>
-        <p>ASIL-rated software development across the full V-model.</p>
+        <p>ASIL-rated software across the V-model.</p>
         <ul class="bullets">
           <li>ASIL A–D development</li>
           <li>Safety-qualified toolchain setup</li>
@@ -720,7 +913,7 @@
           <span class="svc__index">04</span>
         </div>
         <h3>Fault Injection Testing</h3>
-        <p>Fault injection design and execution across the integration hierarchy.</p>
+        <p>Campaigns across the integration hierarchy.</p>
         <ul class="bullets">
           <li>Hardware fault injection</li>
           <li>ECU-level testing</li>
@@ -737,7 +930,7 @@
           <span class="svc__index">05</span>
         </div>
         <h3>Compliance &amp; Certification</h3>
-        <p>Coordinated audit support — kickoff to close-out.</p>
+        <p>Audit support — kickoff to close-out.</p>
         <ul class="bullets">
           <li>ISO 26262 compliance</li>
           <li>ISO 21448 (SOTIF) compliance</li>
@@ -754,7 +947,7 @@
           <span class="svc__index">06</span>
         </div>
         <h3>Training &amp; Workshops</h3>
-        <p>Practitioner-led training — standards into practice.</p>
+        <p>Practitioner-led — standards into practice.</p>
         <ul class="bullets">
           <li>Engineer training programs</li>
           <li>Leadership awareness programs</li>
@@ -777,14 +970,13 @@
       <p class="eyebrow reveal">The V-Model</p>
       <h2 class="section__title reveal">From safety goals to validated evidence — the V-model, applied.</h2>
       <p class="section__sub reveal">
-        The classical ISO 26262 V — left-arm requirements decomposition, right-arm verification and validation,
-        with explicit traceability across each level.
+        ISO 26262 V — requirements left, verification right, full traceability across each level.
       </p>
     </header>
 
     <figure class="vmodel__figure reveal" role="img"
             aria-label="Functional safety V-model diagram showing requirements decomposition on the left arm, implementation at the apex, and verification/validation on the right arm.">
-      <svg viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet" class="vmodel__svg" aria-hidden="true">
+      <svg viewBox="-230 -10 1560 560" preserveAspectRatio="xMidYMid meet" class="vmodel__svg" aria-hidden="true">
         <defs>
           <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M0,0 L8,4 L0,8 z" fill="#C0392B"/>
@@ -870,6 +1062,52 @@
         <text class="v-side"  x="60" y="36" text-anchor="start">Requirements &amp; Design</text>
         <text class="v-side"  x="1040" y="36" text-anchor="end">Verification &amp; Validation</text>
       </svg>
+
+      <!--
+        Mobile fallback. The SVG text becomes unreadable below ~720px wide;
+        CSS swaps the diagram for this vertical list, which preserves the
+        same eight steps and pairing (left-arm requirements next to their
+        right-arm validation activity).
+      -->
+      <ol class="vmodel__list" aria-label="Functional safety V-model — vertical list view">
+        <li class="vmodel__step">
+          <span class="vmodel__num">01</span>
+          <div><strong>Item Definition</strong><small>Scope · boundary · operating modes</small></div>
+        </li>
+        <li class="vmodel__step">
+          <span class="vmodel__num">02</span>
+          <div><strong>HARA &amp; Safety Goals</strong><small>ASIL classification</small></div>
+        </li>
+        <li class="vmodel__step">
+          <span class="vmodel__num">03</span>
+          <div><strong>Functional Safety Concept</strong><small>Allocation · degradation strategy</small></div>
+        </li>
+        <li class="vmodel__step">
+          <span class="vmodel__num">04</span>
+          <div><strong>Technical Safety Concept</strong><small>HW/SW partitioning · mechanisms</small></div>
+        </li>
+        <li class="vmodel__step vmodel__step--apex">
+          <span class="vmodel__num">—</span>
+          <div><strong>Implementation</strong><small>Hardware &amp; software development</small></div>
+        </li>
+        <li class="vmodel__step">
+          <span class="vmodel__num">05</span>
+          <div><strong>Unit &amp; Integration Test</strong><small>Component-level verification</small></div>
+        </li>
+        <li class="vmodel__step">
+          <span class="vmodel__num">06</span>
+          <div><strong>Fault Injection Testing</strong><small>HW / SW / bus-level campaigns</small></div>
+        </li>
+        <li class="vmodel__step">
+          <span class="vmodel__num">07</span>
+          <div><strong>System Validation</strong><small>HIL · VIL · acceptance scenarios</small></div>
+        </li>
+        <li class="vmodel__step">
+          <span class="vmodel__num">08</span>
+          <div><strong>Safety Case &amp; Certification</strong><small>Evidence pack · audit · approval</small></div>
+        </li>
+      </ol>
+
       <figcaption class="vmodel__caption">
         Dashed horizontals mark traceability between requirements and their corresponding verification activity at each level.
       </figcaption>
@@ -1001,7 +1239,7 @@
       <p class="eyebrow reveal">Compliance &amp; Regulations</p>
       <h2 class="section__title reveal">Standards expertise built from real audits, not slide decks.</h2>
       <p class="section__sub reveal">
-        Standards led across passenger cars, commercial vehicles, electrified powertrains, and ADAS.
+        Passenger cars, commercial vehicles, EV powertrains, ADAS.
       </p>
     </header>
 
@@ -1021,17 +1259,6 @@
           <p>Safety of the Intended Functionality for ADAS, AD and complex sensing.</p>
         </article>
 
-        <article class="badge">
-          <div class="badge__ring"><span>Auto</span><strong>SPICE</strong></div>
-          <h3>ASPICE</h3>
-          <p>Automotive SPICE process assessment alignment for SW &amp; systems.</p>
-        </article>
-
-        <article class="badge">
-          <div class="badge__ring"><span>IATF</span><strong>16949</strong></div>
-          <h3>IATF</h3>
-          <p>Automotive quality management system integration with safety processes.</p>
-        </article>
       </div>
 
       <!-- ASIL pyramid (right) -->
@@ -1078,10 +1305,10 @@
     </div>
 
     <ul class="comp-support reveal" role="list">
-      <li><span>Certification Coordination</span><p>Joint planning with TÜV SÜD, TÜV Rheinland, equivalents.</p></li>
-      <li><span>Homologation Support</span><p>Region-specific regulatory and type approval alignment.</p></li>
-      <li><span>Audit Readiness</span><p>Walkthroughs, evidence reviews, gap closure.</p></li>
-      <li><span>Documentation Support</span><p>Safety case, DIA, work product reviews, traceability.</p></li>
+      <li><span>Certification</span><p>TÜV SÜD &amp; Rheinland coordination.</p></li>
+      <li><span>Homologation</span><p>Type approval, regional alignment.</p></li>
+      <li><span>Audit Readiness</span><p>Evidence reviews, gap closure.</p></li>
+      <li><span>Documentation</span><p>Safety case, DIA, traceability.</p></li>
     </ul>
   </div>
 </section>
@@ -1096,7 +1323,7 @@
       <p class="eyebrow reveal">Training &amp; Workshops</p>
       <h2 class="section__title reveal">Standards taught the way safety engineers learn them best — hands-on.</h2>
       <p class="section__sub reveal">
-        On-site, hybrid, or remote. Lecture + lab + real automotive scenarios.
+        On-site, hybrid, or remote. Lecture, lab, and real scenarios.
       </p>
     </header>
 
@@ -1114,7 +1341,7 @@
       <aside class="train__stat glass reveal">
         <p class="eyebrow">Trained To Date</p>
         <div class="bigstat"><span data-count="500" data-suffix="+">0</span></div>
-        <p>Engineers and managers trained across OEMs, Tier-1 suppliers, and certification organizations.</p>
+        <p>Engineers and managers across OEMs, Tier-1s, and certification bodies.</p>
       </aside>
     </div>
   </div>
@@ -1254,13 +1481,11 @@
         <p class="eyebrow">Functional Safety Expert</p>
         <h3>Rushabh</h3>
         <p class="leader__lede">
-          26+ years across automotive, industrial, aerospace, and hydraulic systems.
-          Standards depth, certification-body fluency, hands-on practice.
+          26+ years across automotive, industrial, aerospace, and hydraulic safety.
         </p>
 
         <blockquote class="leader__quote reveal">
-          <p>Functional Safety isn&rsquo;t a checklist — it&rsquo;s an engineering discipline that
-          earns trust one safety mechanism at a time.</p>
+          <p>Functional Safety isn&rsquo;t a checklist — it&rsquo;s rigorous engineering, one safety mechanism at a time.</p>
           <footer>— Rushabh<span class="leader__quote-role">Functional Safety Expert · FuSaLogix</span></footer>
         </blockquote>
 
@@ -1287,8 +1512,6 @@
         <div class="leader__chips">
           <span>ISO 26262</span>
           <span>ISO 21448</span>
-          <span>ASPICE</span>
-          <span>IATF 16949</span>
           <span>FMEDA</span>
         </div>
       </div>
@@ -1316,8 +1539,7 @@
       <p class="eyebrow reveal">Contact</p>
       <h2 class="section__title reveal">Talk to a Functional Safety expert.</h2>
       <p class="section__sub reveal">
-        Brief us on your program and we&rsquo;ll respond within one business day
-        with the right team and engagement model.
+        Brief us on your program. We respond within one business day.
       </p>
     </header>
 
@@ -1422,7 +1644,7 @@
 
         <div class="glass contact__sla">
           <p class="eyebrow">Response Time</p>
-          <p><strong>Within 1 business day</strong> for consultation requests. Senior engineering response for technical enquiries.</p>
+          <p><strong>Within 1 business day.</strong> Senior engineers on technical enquiries.</p>
         </div>
       </aside>
     </div>
@@ -1443,8 +1665,7 @@
         Engineering Functional Safety. <em>Enabling safer mobility.</em>
       </p>
       <p class="footer__about">
-        FuSaLogix is a specialised consulting and engineering practice focused exclusively on
-        Functional Safety for the automotive industry and adjacent safety-critical domains.
+        Functional Safety consulting and engineering for automotive and safety-critical systems.
       </p>
     </div>
 
@@ -1453,17 +1674,11 @@
       <!-- Brand column -->
       <div class="footer__brand">
         <a class="nav__brand" href="#top" aria-label="FuSaLogix home">
-          <svg class="nav__mark" width="36" height="36" viewBox="0 0 64 64" aria-hidden="true">
-            <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#C0392B" stroke-width="2"/>
-            <path fill="none" stroke="#D35400" stroke-width="3.5" stroke-linecap="round"
-                  d="M16 20h22M16 32h18M16 44h12"/>
-            <circle cx="46" cy="44" r="5" fill="none" stroke="#C0392B" stroke-width="3"/>
-          </svg>
-          <span class="nav__wordmark">FuSa<span>Logix</span></span>
+          <span class="nav__wordmark"><strong>FuSa</strong><span>Logix</span></span>
         </a>
         <dl class="footer__spec">
           <div><dt>Practice</dt><dd>Functional Safety</dd></div>
-          <div><dt>Standards</dt><dd>ISO 26262 · ISO 21448 · ASPICE</dd></div>
+          <div><dt>Standards</dt><dd>ISO 26262 · ISO 21448 (SOTIF)</dd></div>
           <div><dt>Founded</dt><dd>15+ years experience</dd></div>
         </dl>
       </div>

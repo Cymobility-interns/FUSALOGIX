@@ -117,15 +117,20 @@
         if (sec) map.set(sec, a);
       }
     });
+    const inView = new Set();
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        const a = map.get(e.target);
-        if (!a) return;
-        if (e.isIntersecting){
-          links.forEach(l => l.classList.remove('is-active'));
-          a.classList.add('is-active');
-        }
+        if (e.isIntersecting) inView.add(e.target);
+        else inView.delete(e.target);
       });
+      links.forEach(l => l.classList.remove('is-active'));
+      if (inView.size){
+        const topmost = [...inView].sort(
+          (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
+        )[0];
+        const link = map.get(topmost);
+        if (link) link.classList.add('is-active');
+      }
     }, { rootMargin:'-45% 0px -50% 0px', threshold:0 });
     map.forEach((_, sec) => io.observe(sec));
   }
