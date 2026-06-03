@@ -1410,54 +1410,39 @@ html.low-power .hero__iso {
    CAPABILITIES
 ===================================================================== */
 /* Capabilities as an editorial numbered list, not a card grid */
+/* Uniform-padding grid. Cell dividers are produced by a 1px gap painted
+   from the parent's background — so every cap has identical padding and
+   the layout auto-adapts to any number of columns at any breakpoint. */
 .cap-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid #2e2e2e;
+  gap: 1px;
+  background: #2e2e2e;
+  border: 1px solid #2e2e2e;
 }
 
 .cap {
   position: relative;
-  padding: 16px 18px 16px 0;
-  border-bottom: 1px solid #2e2e2e;
-  background: transparent;
+  padding: 22px 22px;
+  background: var(--bg-0);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 52px 1fr;
   gap: 14px;
-  align-items: start;
+  align-items: baseline;
 }
 
 .cap:hover {
-  background: rgba(255, 255, 255, .012)
-}
-
-/* dividers between columns */
-.cap-grid>.cap:not(:nth-child(3n)) {
-  border-right: 1px solid #2e2e2e;
-  padding-right: 18px
-}
-
-.cap-grid>.cap:not(:nth-child(3n)) {
-  padding-left: 18px
-}
-
-.cap-grid>.cap:nth-child(3n) {
-  padding-left: 18px
-}
-
-.cap-grid>.cap:nth-child(3n+1) {
-  padding-left: 0
+  background: #1f1f1f;
 }
 
 .cap__num {
   display: block;
   font-family: var(--font-disp);
-  font-weight: 400;
-  font-size: 1.4rem;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.3rem;
   color: var(--accent);
   line-height: 1;
-  margin-top: 4px;
   font-feature-settings: "lnum";
 }
 
@@ -2103,8 +2088,7 @@ html.low-power .svc__iso {
   width: calc(100% - 16px);
   height: calc(100% - 16px);
   object-fit: contain;
-  filter: grayscale(1) brightness(1.15) contrast(.95);
-  transition: filter var(--t-med);
+  transition: transform var(--t-med);
 }
 .logo__txt {
   /* Initials fallback — sits behind the img. If <img> fails to load,
@@ -2121,7 +2105,7 @@ html.low-power .svc__iso {
   box-shadow: 0 6px 20px color-mix(in srgb, var(--accent, #C0392B) 25%, transparent);
 }
 .logos li:hover .logo__img {
-  filter: grayscale(0) brightness(1) contrast(1);
+  transform: scale(1.05);
 }
 
 .logos b {
@@ -2945,17 +2929,6 @@ table {
     border-top: 1px solid #2e2e2e
   }
 
-  /* Capabilities 3-col → 2-col override */
-  .cap-grid>.cap {
-    border-right: none;
-    padding-left: 24px;
-    padding-right: 24px
-  }
-
-  .cap-grid>.cap:nth-child(odd) {
-    border-right: 1px solid #2e2e2e
-  }
-
   /* Offerings 3-col → still 3-col at 1180, but on tablet sub-1024 needs care */
   .off-grid {
     grid-template-columns: repeat(2, 1fr)
@@ -3264,9 +3237,8 @@ table {
     grid-template-columns: 1fr
   }
 
-  /* 1-column: drop every column-divider border-right that was added by nth-child rules */
-  .cap-grid>.cap,
-  .cap-grid>.cap:nth-child(odd),
+  /* 1-column: drop every column-divider border-right that was added by nth-child rules.
+     (cap-grid no longer needs this — it uses gap-as-border now and auto-adapts.) */
   .off,
   .off:nth-child(odd),
   .case,
