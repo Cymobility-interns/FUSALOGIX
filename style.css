@@ -407,17 +407,24 @@ html:not(.js) .reveal{opacity:1}
 }
 
 .presence__map{
-  position:relative;border-radius:var(--radius-lg);
+  border-radius:var(--radius-lg);
   background:
     radial-gradient(60% 80% at 50% 45%, rgba(192,57,43,.06), transparent 70%),
     linear-gradient(180deg, rgba(44,44,44,.45), rgba(26,26,26,.55));
   border:1px solid rgba(255,255,255,.07);
-  padding:18px 18px 0;
+  padding:18px;
   overflow:hidden;
   isolation:isolate;
-  min-height:420px;
 }
-.presence__svg{width:100%;height:auto;display:block}
+/* Aspect-locked viewport so the SVG never letterboxes inside the container
+   and pins (positioned in % of this box) stay glued to the right continents
+   on every screen width. */
+.presence__viewport{
+  position:relative;
+  width:100%;
+  aspect-ratio: 1000 / 500;
+}
+.presence__svg{width:100%;height:100%;display:block}
 
 /* Continent dotted silhouettes: hint of warm tint to feel intentional */
 .continents path{
@@ -1206,7 +1213,6 @@ html:not(.js) .reveal{opacity:1}
   .pin:hover .pin__tag,
   .pin:focus .pin__tag,
   .pin:active .pin__tag{opacity:1}
-  .presence__map{min-height:280px}
   .presence__legend{gap:14px}
   .leg-item--meta{margin-left:0;width:100%}
 }
