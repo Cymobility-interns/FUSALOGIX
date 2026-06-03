@@ -489,8 +489,8 @@ html:not(.js) .reveal {
   left: 0;
   right: 0;
   z-index: 50;
-  transition: background var(--t-med), border-color var(--t-med);
-  border-bottom: 1px solid transparent;
+  background: #1a1a1a;
+  border-bottom: 1px solid #2e2e2e;
 }
 
 /* Override the container max-width so nav content spans the full viewport. */
@@ -576,11 +576,6 @@ html:not(.js) .reveal {
   border-radius: 2px;
   transition: transform var(--t-fast), opacity var(--t-fast);
   pointer-events: none
-}
-
-.nav--scrolled {
-  background: rgba(26, 26, 26, .94);
-  border-bottom-color: #2e2e2e;
 }
 
 .nav__mobile {
@@ -2086,8 +2081,9 @@ html.low-power .svc__iso {
 }
 
 .logo {
-  width: 56px;
-  height: 56px;
+  position: relative;
+  width: 76px;
+  height: 76px;
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -2098,16 +2094,34 @@ html.low-power .svc__iso {
   color: #cfcdc8;
   background: rgba(255, 255, 255, .04);
   border: 1px solid rgba(255, 255, 255, .1);
-  filter: grayscale(1);
-  transition: filter var(--t-med), color var(--t-med), background var(--t-med), border-color var(--t-med), box-shadow var(--t-med);
+  overflow: hidden;
+  transition: background var(--t-med), border-color var(--t-med), box-shadow var(--t-med);
+}
+.logo__img {
+  position: absolute;
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.15) contrast(.95);
+  transition: filter var(--t-med);
+}
+.logo__txt {
+  /* Initials fallback — sits behind the img. If <img> fails to load,
+     its onerror handler removes it and these initials become visible. */
+  font-family: var(--font-disp);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #cfcdc8;
 }
 
 .logos li:hover .logo {
-  filter: grayscale(0);
-  color: #F5F5F5;
   background: color-mix(in srgb, var(--accent, #C0392B) 22%, transparent);
   border-color: color-mix(in srgb, var(--accent, #C0392B) 55%, transparent);
   box-shadow: 0 6px 20px color-mix(in srgb, var(--accent, #C0392B) 25%, transparent);
+}
+.logos li:hover .logo__img {
+  filter: grayscale(0) brightness(1) contrast(1);
 }
 
 .logos b {
@@ -3437,15 +3451,10 @@ html.low-power body::after {
 }
 
 html.low-power .glass,
-html.low-power .nav--scrolled,
 html.low-power .nav__mobile {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   background: linear-gradient(180deg, rgba(44, 44, 44, .92), rgba(34, 34, 34, .92));
-}
-
-html.low-power .nav--scrolled {
-  background: rgba(26, 26, 26, .96)
 }
 
 html.low-power .pin__pulse {

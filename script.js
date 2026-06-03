@@ -76,13 +76,6 @@
     const mobile = $('#navMobile');
     if (!nav) return;
 
-    const onScroll = () => {
-      if (window.scrollY > 24) nav.classList.add('nav--scrolled');
-      else nav.classList.remove('nav--scrolled');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive:true });
-
     if (toggle && mobile){
       toggle.addEventListener('click', () => {
         const open = mobile.hasAttribute('hidden') ? false : true;
