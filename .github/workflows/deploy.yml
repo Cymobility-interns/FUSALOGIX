@@ -18,4 +18,4 @@ jobs:
           port: 21
           protocol: ftps
           local-dir: ./
-          server-dir: /public_html/fusalogix.com/
+          server-dir: ./
