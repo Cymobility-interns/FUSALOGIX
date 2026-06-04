@@ -1,0 +1,22 @@
+# robots.txt — FuSaLogix
+# Allow all well-behaved crawlers full access.
+# When moving to a custom domain, update the Sitemap URL below.
+
+User-agent: *
+Allow: /
+Disallow: /.git/
+
+# Block scraper/AI bots that don't drive traffic (optional — remove any you want to allow)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+Sitemap: https://cymobility-interns.github.io/FUZALOGIX/sitemap.xml

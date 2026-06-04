@@ -1,0 +1,18 @@
+{
+  "name": "FuSaLogix — Engineering Functional Safety",
+  "short_name": "FuSaLogix",
+  "description": "Functional Safety consulting for automotive OEMs and Tier-1 suppliers — ISO 26262, ISO 21448 (SOTIF).",
+  "start_url": "/FUZALOGIX/",
+  "scope": "/FUZALOGIX/",
+  "display": "standalone",
+  "background_color": "#1A1A1A",
+  "theme_color": "#1A1A1A",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

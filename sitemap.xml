@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap for FuSaLogix.
+  Currently a single-page site, so only the root URL is listed.
+  When you split capabilities/services/training into their own pages,
+  add a <url> block for each new page.
+  When you move to a custom domain, update every <loc> URL.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://cymobility-interns.github.io/FUZALOGIX/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
