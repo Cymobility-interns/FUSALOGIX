@@ -162,25 +162,42 @@ p {
 }
 
 /* =====================================================================
-   FIXED BACKGROUND — faint isometric blueprint grid
-   Pure CSS: three repeating-linear-gradient layers at 30° / -30° / 90°
-   simulate an isometric blueprint pattern. Very low opacity, masked to
-   the centre. Adds 3D depth without competing with content.
+   FIXED BACKGROUND — connected-mobility photo + cinematic vignette
+   Two layers:
+     ::before  bumped to 10% opacity for a touch more presence
+     ::after   radial vignette darkens edges, anchoring the eye to
+               the content column without dimming the reading area.
 ===================================================================== */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   background-image: url('images/bg_connected_mobility.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.06;
+  opacity: 0.10;
   mix-blend-mode: luminosity;
 }
 
-html.low-power body::before {
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    transparent 0%,
+    transparent 38%,
+    rgba(0, 0, 0, 0.32) 78%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+
+html.low-power body::before,
+html.low-power body::after {
   display: none
 }
 
@@ -3536,4 +3553,151 @@ html.low-power .case:hover {
 .ind-card,
 .logos li {
   contain: layout paint;
+}
+
+/* =====================================================================
+   HERO DIAGRAM IMAGE  (.hero__img)
+   Replaces the prior inline SVG schematic with the rendered diagram.
+   Inherits .hero__diagram grid placement; sized to match prior SVG.
+===================================================================== */
+.hero__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 520px;
+  object-fit: contain;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-2);
+}
+
+/* =====================================================================
+   PRELOADER  —  brand reveal on load / reload
+   Hard 1.5s total: letters in (≤0.85s), bar fills (≤1.2s), fade (1.2–1.5s).
+   Pure CSS handles everything; JS is just an early-dismiss optimization.
+   Gated behind html.js so no-JS users see content immediately.
+===================================================================== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 45%, #262626 0%, var(--bg-0) 65%);
+  opacity: 1;
+  transition: opacity .3s var(--ease), visibility 0s linear .3s;
+  /* Self-dismissing animation — fires regardless of JS. Hits opacity 0
+     and pointer-events:none at exactly 1.5s so the page is never trapped. */
+  animation: preAutoHide .3s var(--ease) 1.2s forwards;
+}
+@keyframes preAutoHide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+html.js .preloader { display: flex; }
+
+.preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  animation: none;
+}
+
+.preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.preloader__wordmark {
+  font-family: var(--font-disp);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 8vw, 5.2rem);
+  letter-spacing: -.01em;
+  line-height: 1;
+  display: inline-flex;
+}
+
+.preloader__letter {
+  display: inline-block;
+  color: var(--white);
+  opacity: 0;
+  transform: translateY(24px) scale(.94);
+  filter: blur(5px);
+  animation: preLetterIn .5s var(--ease) forwards;
+  animation-delay: calc(var(--i) * 40ms);
+  will-change: transform, opacity, filter;
+}
+.preloader__letter--strong { font-weight: 700; }
+.preloader__letter--accent {
+  color: var(--accent);
+  text-shadow: 0 0 28px rgba(192, 57, 43, .38);
+}
+
+@keyframes preLetterIn {
+  0%   { opacity: 0; transform: translateY(24px) scale(.94); filter: blur(5px); }
+  60%  { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.preloader__tagline {
+  font-family: var(--font-sans);
+  font-size: .78rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--dim);
+  opacity: 0;
+  animation: preFadeUp .35s var(--ease) forwards;
+  animation-delay: .5s;
+}
+
+@keyframes preFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.preloader__bar {
+  position: relative;
+  width: min(260px, 56vw);
+  height: 2px;
+  background: rgba(245, 245, 245, .08);
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 0;
+  animation: preFadeUp .3s var(--ease) forwards;
+  animation-delay: .55s;
+}
+.preloader__bar > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--grad-1);
+  box-shadow: 0 0 12px rgba(192, 57, 43, .45);
+  animation: preBarFill .65s cubic-bezier(.4, 0, .2, 1) forwards;
+  animation-delay: .6s;
+}
+@keyframes preBarFill {
+  from { width: 0% }
+  to   { width: 100% }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__letter,
+  .preloader__tagline,
+  .preloader__bar,
+  .preloader__bar > span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .preloader { animation: preAutoHide .2s linear .4s forwards; }
 }

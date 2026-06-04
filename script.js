@@ -37,6 +37,10 @@
     }
   }
 
+  // Preloader runs as early as possible — before DOMContentLoaded init —
+  // so the brand reveal starts the moment the script parses.
+  setupPreloader();
+
   document.addEventListener('DOMContentLoaded', init);
 
   function init(){
@@ -48,6 +52,27 @@
     setupContactForm();
     // Particle hero canvas removed — editorial typography carries the hero.
     // Lifecycle scroll-fill removed — replaced by the static V-model diagram.
+  }
+
+  /* ------------------------------------------------------------------
+     Preloader: dismiss after window.load OR a minimum reveal duration,
+     whichever is later. Hard cap prevents getting stuck on slow assets.
+  ------------------------------------------------------------------ */
+  function setupPreloader(){
+    const pre = document.getElementById('preloader');
+    if (!pre) return;
+
+    // The CSS animation already removes the preloader at t=1.5s.
+    // JS just garbage-collects the node a bit after the fade finishes,
+    // and force-clears on bfcache restore so back/forward nav is instant.
+    const totalMs = reduced ? 600 : 1600;
+    setTimeout(() => {
+      if (pre.parentNode) pre.parentNode.removeChild(pre);
+    }, totalMs);
+
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) pre.classList.add('is-hidden');
+    });
   }
 
   /* Render data-count numbers immediately as final values (no animation). */

@@ -137,6 +137,29 @@
 </head>
 <body>
 
+<!-- ============================================================
+     PRELOADER  —  brand reveal on page load / reload
+     Letters animate in, progress bar fills, overlay fades out.
+     Hidden entirely when JS is disabled (html:not(.js)).
+============================================================ -->
+<div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading FuSaLogix">
+  <div class="preloader__inner">
+    <div class="preloader__wordmark" aria-hidden="true">
+      <span class="preloader__letter preloader__letter--strong" style="--i:0">F</span>
+      <span class="preloader__letter preloader__letter--strong" style="--i:1">u</span>
+      <span class="preloader__letter preloader__letter--strong" style="--i:2">S</span>
+      <span class="preloader__letter preloader__letter--strong" style="--i:3">a</span>
+      <span class="preloader__letter preloader__letter--accent" style="--i:4">L</span>
+      <span class="preloader__letter preloader__letter--accent" style="--i:5">o</span>
+      <span class="preloader__letter preloader__letter--accent" style="--i:6">g</span>
+      <span class="preloader__letter preloader__letter--accent" style="--i:7">i</span>
+      <span class="preloader__letter preloader__letter--accent" style="--i:8">x</span>
+    </div>
+    <div class="preloader__tagline">Engineering Functional Safety</div>
+    <div class="preloader__bar" aria-hidden="true"><span></span></div>
+  </div>
+</div>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============================================================
@@ -280,128 +303,19 @@
       </div>
     </div>
 
-    <!-- Blueprint-style top-down vehicle safety architecture diagram -->
-    <figure class="hero__diagram" aria-label="Schematic top-down view of an automotive safety architecture showing seven ECU nodes interconnected by a CAN bus.">
-      <svg viewBox="0 0 540 460" class="hero__svg" aria-hidden="true">
-        <defs>
-          <pattern id="bp-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#262626" stroke-width="0.5"/>
-          </pattern>
-        </defs>
-
-        <!-- background blueprint grid -->
-        <rect width="540" height="460" fill="url(#bp-grid)"/>
-
-        <!-- annotation corner brackets (engineering drawing chrome) -->
-        <g stroke="#3a3a3a" stroke-width="0.8" fill="none">
-          <path d="M 18 18 L 18 32 M 18 18 L 32 18"/>
-          <path d="M 522 18 L 522 32 M 522 18 L 508 18"/>
-          <path d="M 18 442 L 18 428 M 18 442 L 32 442"/>
-          <path d="M 522 442 L 522 428 M 522 442 L 508 442"/>
-        </g>
-
-        <!-- title -->
-        <text x="50" y="38" class="bp-title">FIG. 01 — VEHICLE SAFETY ARCHITECTURE · TOP VIEW</text>
-
-        <!-- dimension labels -->
-        <text x="500" y="38" class="bp-meta" text-anchor="end">ASIL-D / ISO 26262</text>
-
-        <!-- vehicle body (top-down silhouette) -->
-        <path d="M 130 80
-                 Q 130 60, 160 60
-                 L 380 60
-                 Q 410 60, 410 80
-                 L 410 380
-                 Q 410 410, 380 410
-                 L 160 410
-                 Q 130 410, 130 380 Z"
-              fill="#1a1a1a" stroke="#5a5550" stroke-width="1.2"/>
-
-        <!-- hood line -->
-        <line x1="130" y1="120" x2="410" y2="120" stroke="#3a3a3a" stroke-width="0.6"/>
-
-        <!-- windshield -->
-        <path d="M 150 140 L 180 175 L 360 175 L 390 140 Z"
-              fill="none" stroke="#3a3a3a" stroke-width="0.8"/>
-        <!-- rear windshield -->
-        <path d="M 150 340 L 180 305 L 360 305 L 390 340 Z"
-              fill="none" stroke="#3a3a3a" stroke-width="0.8"/>
-
-        <!-- centerline -->
-        <line x1="270" y1="60" x2="270" y2="410" stroke="#3a3a3a" stroke-width="0.4" stroke-dasharray="2 4"/>
-
-        <!-- wheels -->
-        <g fill="#0f0f0f" stroke="#5a5550" stroke-width="0.8">
-          <rect x="108" y="105" width="22" height="55" rx="2"/>
-          <rect x="410" y="105" width="22" height="55" rx="2"/>
-          <rect x="108" y="305" width="22" height="55" rx="2"/>
-          <rect x="410" y="305" width="22" height="55" rx="2"/>
-        </g>
-
-        <!-- CAN bus (dashed network connecting ECUs) -->
-        <g stroke="#C0392B" stroke-width="0.9" fill="none" stroke-dasharray="3 3" opacity="0.55">
-          <path d="M 200 95 L 270 235 L 340 95"/>
-          <path d="M 270 235 L 200 380"/>
-          <path d="M 270 235 L 340 380"/>
-          <path d="M 270 235 L 200 235 M 270 235 L 340 235"/>
-        </g>
-
-        <!-- ECU nodes -->
-        <g class="bp-ecu">
-          <!-- 01 front-left ADAS -->
-          <circle cx="200" cy="95" r="5" fill="#C0392B"/>
-          <circle cx="200" cy="95" r="9" fill="none" stroke="#C0392B" stroke-width="0.6"/>
-          <text x="180" y="100" class="bp-num" text-anchor="end">01</text>
-          <text x="180" y="112" class="bp-tag" text-anchor="end">ADAS · FRONT-L</text>
-
-          <!-- 02 front-right ADAS -->
-          <circle cx="340" cy="95" r="5" fill="#C0392B"/>
-          <circle cx="340" cy="95" r="9" fill="none" stroke="#C0392B" stroke-width="0.6"/>
-          <text x="360" y="100" class="bp-num" text-anchor="start">02</text>
-          <text x="360" y="112" class="bp-tag" text-anchor="start">ADAS · FRONT-R</text>
-
-          <!-- 03 powertrain ECU -->
-          <circle cx="200" cy="235" r="5" fill="#C0392B"/>
-          <circle cx="200" cy="235" r="9" fill="none" stroke="#C0392B" stroke-width="0.6"/>
-          <text x="180" y="240" class="bp-num" text-anchor="end">03</text>
-          <text x="180" y="252" class="bp-tag" text-anchor="end">POWERTRAIN</text>
-
-          <!-- 04 VCU (apex) -->
-          <rect x="252" y="220" width="36" height="30" fill="#C0392B" stroke="#F5F5F5" stroke-width="0.5"/>
-          <text x="270" y="240" class="bp-vcu" text-anchor="middle">VCU</text>
-          <text x="270" y="272" class="bp-tag" text-anchor="middle">04 · VEHICLE CONTROL</text>
-
-          <!-- 05 BMS -->
-          <circle cx="340" cy="235" r="5" fill="#C0392B"/>
-          <circle cx="340" cy="235" r="9" fill="none" stroke="#C0392B" stroke-width="0.6"/>
-          <text x="360" y="240" class="bp-num" text-anchor="start">05</text>
-          <text x="360" y="252" class="bp-tag" text-anchor="start">BMS</text>
-
-          <!-- 06 rear-left -->
-          <circle cx="200" cy="380" r="5" fill="#C0392B"/>
-          <circle cx="200" cy="380" r="9" fill="none" stroke="#C0392B" stroke-width="0.6"/>
-          <text x="180" y="385" class="bp-num" text-anchor="end">06</text>
-          <text x="180" y="397" class="bp-tag" text-anchor="end">REAR · L</text>
-
-          <!-- 07 rear-right -->
-          <circle cx="340" cy="380" r="5" fill="#C0392B"/>
-          <circle cx="340" cy="380" r="9" fill="none" stroke="#C0392B" stroke-width="0.6"/>
-          <text x="360" y="385" class="bp-num" text-anchor="start">07</text>
-          <text x="360" y="397" class="bp-tag" text-anchor="start">REAR · R</text>
-        </g>
-
-        <!-- legend strip at bottom -->
-        <g transform="translate(50, 430)">
-          <line x1="0" y1="0" x2="14" y2="0" stroke="#C0392B" stroke-width="0.9" stroke-dasharray="3 3"/>
-          <text x="20" y="3" class="bp-legend">CAN BUS</text>
-          <circle cx="100" cy="0" r="3" fill="#C0392B"/>
-          <text x="110" y="3" class="bp-legend">ECU NODE</text>
-          <rect x="190" y="-3" width="6" height="6" fill="#C0392B"/>
-          <text x="202" y="3" class="bp-legend">VEHICLE CONTROL UNIT</text>
-        </g>
-      </svg>
+    <!-- Vehicle Safety Architecture — flagship diagram (ASIL-D / ISO 26262) -->
+    <figure class="hero__diagram" aria-label="Vehicle Safety Architecture top view showing the Vehicle Control Unit as safety master connected to ADAS controllers, brake, steering, powertrain, battery and rear safety ECUs per ISO 26262 ASIL-D.">
+      <img
+        src="images/vehicle_safety_architecture.png"
+        alt="ASIL-D vehicle safety architecture top-down diagram — VCU safety master connected to FLAC/FRAC ADAS controllers, PCM powertrain, BMS battery management, BCU brake control, SCU steering control and rear safety ECUs via safety-critical signals, redundant paths and diagnostic channels per ISO 26262."
+        class="hero__img"
+        width="1672"
+        height="940"
+        fetchpriority="high"
+        decoding="async"
+      />
       <figcaption class="hero__diagram-caption">
-        Illustrative — ECUs typical of an ASIL-D electrified powertrain platform.
+        FIG. 01 — Vehicle Safety Architecture · Top View · ASIL-D / ISO 26262
       </figcaption>
     </figure>
 
