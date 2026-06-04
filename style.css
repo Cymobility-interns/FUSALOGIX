@@ -1856,8 +1856,9 @@ html.low-power .svc__iso {
   width: 100%;
   height: auto;
   display: block;
-  max-width: 340px;
-  margin: 0 auto
+  max-width: 460px;
+  margin: 0 auto;
+  overflow: visible
 }
 
 .asil__svg .asil-letter {
