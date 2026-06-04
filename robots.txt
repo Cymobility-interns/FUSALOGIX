@@ -19,4 +19,4 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
-Sitemap: https://cymobility-interns.github.io/FUZALOGIX/sitemap.xml
+Sitemap: https://cymobility-interns.github.io/FUSALOGIX/sitemap.xml
