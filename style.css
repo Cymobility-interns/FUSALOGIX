@@ -662,7 +662,7 @@ html.low-power .hero__iso {
   max-width: none;
   width: 100%;
   display: grid;
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: 1fr 1.1fr;
   gap: 40px;
   align-items: start;
 }
@@ -679,8 +679,8 @@ html.low-power .hero__iso {
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 18px;
+  justify-content: center;
+  padding-top: 0;
 }
 
 .hero__svg {
@@ -3565,9 +3565,9 @@ html.low-power .case:hover {
   width: 100%;
   height: auto;
   display: block;
-  max-height: 520px;
+  max-height: 760px;
   object-fit: contain;
-  background: #0d0d0d;
+  background: transparent;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-2);
