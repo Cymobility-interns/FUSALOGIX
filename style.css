@@ -36,7 +36,7 @@
 
   --radius: 14px;
   --radius-lg: 22px;
-  --maxw: 1360px;
+  --maxw: 1520px;
 
   --shadow-1: 0 10px 30px rgba(0, 0, 0, .45);
   --shadow-2: 0 20px 60px rgba(0, 0, 0, .55);
@@ -268,10 +268,6 @@ section[id] {
   max-width: none;
   margin: 0 0 18px;
   text-align: left;
-  display: grid;
-  grid-template-columns: auto 1fr 1.4fr;
-  gap: 12px 40px;
-  align-items: end;
   padding-bottom: 12px;
   border-bottom: 1px solid #2e2e2e;
   position: relative;
@@ -280,19 +276,15 @@ section[id] {
 /* Compliance heading: oversized editorial display */
 .compliance .section__title {
   font-size: clamp(2.4rem, 3.6vw + .6rem, 3.8rem);
-  max-width: 22ch;
+  max-width: none;
   line-height: 1.05;
 }
 
-.section__head .eyebrow {
-  grid-column: 2;
-  grid-row: 1
-}
-
+/* §XX italic number sits inline with the eyebrow on the same baseline. */
 .section__num {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  align-self: start;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 4px;
   font-family: var(--font-disp);
   font-style: italic;
   font-weight: 400;
@@ -300,63 +292,30 @@ section[id] {
   color: var(--accent);
   line-height: 1;
   letter-spacing: -.01em;
-  padding-top: 2px;
 }
 
 .section__num::before {
   content: "§ "
 }
 
+.section__head .eyebrow {
+  margin: 0
+}
+
 .section__title {
   font-size: var(--fs-h2);
-  grid-column: 2;
-  grid-row: 2;
   letter-spacing: -.025em;
-  max-width: 18ch
+  max-width: none;
+  margin: 22px 0 0;
 }
 
 .section__sub {
-  margin: 0;
+  margin: 18px 0 0;
   font-size: 1.08rem;
   color: var(--muted);
-  grid-column: 3;
-  grid-row: 1 / span 2;
   line-height: 1.55;
-  max-width: 54ch;
-  align-self: end;
-  font-family: var(--font-sans)
-}
-
-@media (max-width: 820px) {
-  .section__head {
-    grid-template-columns: auto 1fr;
-    gap: 14px 18px
-  }
-
-  .section__num {
-    grid-column: 1;
-    grid-row: 1
-  }
-
-  .section__head .eyebrow {
-    grid-column: 2;
-    grid-row: 1;
-    margin: 0
-  }
-
-  .section__title {
-    grid-column: 1 / span 2;
-    grid-row: 2;
-    max-width: none;
-    margin-top: 8px
-  }
-
-  .section__sub {
-    grid-column: 1 / span 2;
-    grid-row: 3;
-    max-width: none;
-    margin-top: 12px
-  }
+  max-width: 80ch;
+  font-family: var(--font-sans);
 }
 
 .eyebrow {
@@ -2924,9 +2883,77 @@ table {
 
 @media (max-width: 1280px) {
 
-  /* Tighten desktop spacing a touch on smaller laptops */
+  /* Compact the hero on smaller laptops so stats stay in view */
+  .hero {
+    padding: 88px 0 28px;
+  }
+
   .hero__inner {
-    gap: 48px
+    gap: 32px
+  }
+
+  .hero__img {
+    max-height: 440px;
+  }
+
+  .hero__title {
+    margin-bottom: 20px;
+  }
+
+  .hero__kicker {
+    margin-bottom: 22px;
+  }
+
+  .hero__inner .hero__stats {
+    margin-top: 28px;
+  }
+
+  .hero__stats {
+    margin-top: 28px;
+    padding-top: 14px;
+  }
+}
+
+/* Short laptop screens (14"/15" at 1366x768, scaled 1080p, etc.) — */
+/* compact hero vertically so the full first-fold renders in view.   */
+@media (max-height: 820px) and (min-width: 981px) {
+  .hero {
+    padding: 84px 0 22px;
+    min-height: auto;
+  }
+
+  .hero__inner {
+    gap: 28px;
+  }
+
+  .hero__img {
+    max-height: 360px;
+  }
+
+  .hero__kicker {
+    margin-bottom: 16px;
+  }
+
+  .hero__title {
+    margin-bottom: 18px;
+  }
+
+  .hero__cta {
+    margin-top: 18px;
+  }
+
+  .hero__inner .hero__stats {
+    margin-top: 22px;
+  }
+
+  .hero__stats {
+    margin-top: 22px;
+    padding-top: 12px;
+    gap: 18px;
+  }
+
+  .stat__num {
+    font-size: clamp(1.7rem, 1.8vw + .5rem, 2.3rem);
   }
 }
 
@@ -3324,9 +3351,8 @@ table {
     padding-right: 0
   }
 
-  /* Section header collapses cleanly with the section number on its own row */
+  /* Section header tightens on phones */
   .section__head {
-    gap: 6px 16px;
     margin-bottom: 20px;
     padding-bottom: 14px
   }
@@ -3565,7 +3591,7 @@ html.low-power .case:hover {
   width: 100%;
   height: auto;
   display: block;
-  max-height: 760px;
+  max-height: 520px;
   object-fit: contain;
   background: transparent;
   border: 1px solid var(--line);
